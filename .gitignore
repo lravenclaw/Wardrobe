@@ -3,7 +3,7 @@ MODULE.bazel.lock
 **/bazel-bin
 **/bazel-out
 **/bazel-testlogs
-**/bazel-Bank
+**/bazel-Wardrobe
 
 **/local_srcs
 
