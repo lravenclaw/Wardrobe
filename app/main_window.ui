@@ -50,7 +50,7 @@
      <string>Add</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="getClientsInDebtButton">
+   <widget class="QPushButton" name="SortButton">
     <property name="geometry">
      <rect>
       <x>570</x>
@@ -60,7 +60,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Get clients in debt</string>
+     <string>Sort items</string>
     </property>
    </widget>
    <widget class="QPushButton" name="editButton">

@@ -15,9 +15,8 @@ qt_cc_library(
 	deps = [
 		"@rules_qt//:qt_core",
 		"@rules_qt//:qt_widgets",
-		"//core/model:client_model",
-		"//core/controller:client_controller",
-		"//resources:clients_qrc",
+		"//core/model:item_model",
+		"//core/controller:item_controller",
 		":main_window_ui",
 	],
 )
@@ -29,9 +28,8 @@ qt_cc_binary(
 		"@rules_qt//:qt_core",
 		"@rules_qt//:qt_widgets",
 		"//app:main_window",
-		"//core/model:client_model",
-		"//core/controller:client_controller",
-		"//resources:clients_qrc",
+		"//core/model:item_model",
+		"//core/controller:item_controller",
 	],
 )
 

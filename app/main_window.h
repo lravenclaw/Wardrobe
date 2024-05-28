@@ -11,8 +11,8 @@
 #include <QtWidgets/QSplitter>
 #include <QtWidgets/QStylePainter>
 
-#include "core/model/client_info.h"
-#include "core/controller/client_controller.h"
+#include "core/model/item_info.h"
+#include "core/controller/item_controller.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
