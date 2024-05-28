@@ -2,7 +2,7 @@
 
 ItemInfo::ItemInfo(QObject *parent)
     : QObject(parent)
-    , m_id(m_idCounter++)
+    , m_id(0)
     , m_price(0.0) {
 }
 
@@ -134,6 +134,10 @@ void ItemInfo::setSeason(const QString &season) {
 
     m_season = season;
     emit seasonChanged();
+}
+
+QString ItemInfo::color() const {
+    return m_color;
 }
 
 double ItemInfo::price() const {

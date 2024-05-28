@@ -18,6 +18,7 @@ class ItemInfo : public QObject {
     Q_PROPERTY(QString placeOfPurchase READ placeOfPurchase WRITE setPlaceOfPurchase NOTIFY placeOfPurchaseChanged)
     Q_PROPERTY(QString washPrinciple READ washPrinciple WRITE setWashPrinciple NOTIFY washPrincipleChanged)
     Q_PROPERTY(QString season READ season WRITE setSeason NOTIFY seasonChanged)
+    Q_PROPERTY(QString color READ color WRITE setColor NOTIFY colorChanged)
     Q_PROPERTY(double price READ price WRITE setPrice NOTIFY priceChanged REQUIRED)
     Q_PROPERTY(QVector<QString> sources READ sources WRITE setSources NOTIFY sourcesChanged)
 
@@ -54,6 +55,9 @@ class ItemInfo : public QObject {
     [[nodiscard]] QString season() const;
     void setSeason(const QString &season);
 
+    [[nodiscard]] QString color() const;
+    void setColor(const QString &color);
+
     [[nodiscard]] double price() const;
     void setPrice(double price);
 
@@ -72,6 +76,7 @@ class ItemInfo : public QObject {
     void placeOfPurchaseChanged();
     void washPrincipleChanged();
     void seasonChanged();
+    void colorChanged();
     void priceChanged();
     void sourcesChanged();
 
@@ -86,9 +91,8 @@ class ItemInfo : public QObject {
     QString m_placeOfPurchase;
     QString m_washPrinciple;
     QString m_season;
+    QString m_color;
     double m_price;
 
     QVector<QString> m_sources;
-
-    static inline int64_t m_idCounter = 0;
 };
