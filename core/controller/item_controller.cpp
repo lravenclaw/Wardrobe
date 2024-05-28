@@ -121,11 +121,16 @@ void ItemController::loadItems(QFile &file) {
     QString data = in.readAll();
     QStringList items = data.split(m_delimiter);
 
+    qDebug() << "File data: " << data << '\n'
+             << "Splited data size: " << items.size() << '\n';
+
     for (auto& item_str : items) {
         auto item_data = item_str.split('\n');
         if (item_data.size() != 11) {
             continue;
         }
+
+        qDebug() << "Item data: " << item_data << '\n';
 
         auto* item = new ItemInfo();
 

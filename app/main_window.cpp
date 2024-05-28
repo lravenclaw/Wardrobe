@@ -51,6 +51,18 @@ void MainWindow::about()
 
 void MainWindow::init() {
     auto* listView = new QListView;
+
+    listView->setResizeMode(QListView::Adjust);
+    listView->setWordWrap(true);
+    listView->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+    listView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    listView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    listView->setModel(m_itemController);
+    listView->showNormal();
+
+    listView->setEditTriggers(QAbstractItemView::AnyKeyPressed |
+                            QAbstractItemView::DoubleClicked);
+
     setCentralWidget(listView);
 
     createActions();

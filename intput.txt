@@ -3,11 +3,9 @@ cotton
 M
 M&F
 shirt  The perfect shirt for a fun mood
-casual
 cell
-Department store “Modny Mir”
-Machine wash in water 40 - 60 degrees
-spring-autumn 
+Department store Modny Mir
+Machine wash in water 40 to 60 degrees
+spring,autumn 
 Black
 20.99
--
