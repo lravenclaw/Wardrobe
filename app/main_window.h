@@ -6,6 +6,7 @@
 #include <QMainWindow>
 #include <QThread>
 #include <QtCore/QVariant>
+#include <QtWidgets>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QListView>
 #include <QtWidgets/QSplitter>
@@ -15,21 +16,35 @@
 #include "core/controller/item_controller.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui {
-class MainWindow;
-}
+class QAction;
+class QMenu;
+class QTextEdit;
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
    public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
-    
+    MainWindow();
+    explicit MainWindow(const QString &fileName);
+
+    void tile();
+
    private slots:
-    //void on_listView_clicked(const QModelIndex &index);
-    
+    void open();
+    bool save();
+    void about();
+
    private:
-    Ui::MainWindow *ui;
+    void init();
+    void createActions();
+    void createStatusBar();
+    void openFile(const QString &fileName);
+    void loadFile(const QString &fileName);
+    bool saveFile(const QString &fileName) const;
+    static QString strippedName(const QString &fullFileName);
+    MainWindow *findMainWindow(const QString &fileName) const;
+
+    QString m_curFileName;
+    ItemController* m_itemController = nullptr;
 };

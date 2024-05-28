@@ -140,6 +140,15 @@ QString ItemInfo::color() const {
     return m_color;
 }
 
+void ItemInfo::setColor(const QString &color) {
+    if (m_color == color) {
+        return;
+    }
+
+    m_color = color;
+    emit colorChanged();
+}
+
 double ItemInfo::price() const {
     return m_price;
 }

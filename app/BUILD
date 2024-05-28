@@ -17,7 +17,7 @@ qt_cc_library(
 		"@rules_qt//:qt_widgets",
 		"//core/model:item_model",
 		"//core/controller:item_controller",
-		":main_window_ui",
+		"//resources:resources_qrc",
 	],
 )
 

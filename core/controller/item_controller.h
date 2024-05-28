@@ -51,11 +51,11 @@ class ItemController : public QAbstractListModel {
     void loadItems(QFile &file);
     void saveItems(QFile &file);
 
-    [[nodiscard]] static ItemController* Init(QObject* parent = nullptr){
+    [[nodiscard]] static ItemController* init(QObject* parent = nullptr){
         return m_instance = new ItemController(parent);
     }
 
-    [[nodiscard]] static ItemController* Instance(){
+    [[nodiscard]] static ItemController* instance(){
         return m_instance;
     }
 
