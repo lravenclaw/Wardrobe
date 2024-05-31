@@ -2,14 +2,11 @@
 
 MainWindow::MainWindow() {
     init();
-    m_itemController = ItemController::instance();
-    if (m_itemController == nullptr) {
-        m_itemController = ItemController::init();
-    }
 }
 
-MainWindow::MainWindow(const QString &fileName) {
-    init();
+MainWindow::MainWindow(const QString &fileName)
+    : MainWindow() {
+
     loadFile(fileName);
 }
 
@@ -50,6 +47,11 @@ void MainWindow::about()
 }
 
 void MainWindow::init() {
+    m_itemController = ItemController::instance();
+    if (m_itemController == nullptr) {
+        m_itemController = ItemController::init();
+    }
+
     auto* listView = new QListView;
 
     listView->setResizeMode(QListView::Adjust);
