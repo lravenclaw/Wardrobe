@@ -1,16 +1,15 @@
 #pragma once
 
 #include <QAbstractListModel>
-#include <QFile>
 #include <QChar>
+#include <QDebug>
+#include <QFile>
 #include <QList>
 #include <QObject>
 #include <QString>
 #include <QVariant>
 #include <QtGlobal>
-#include <QDebug>
 #include <magic_enum_all.hpp>
-
 
 #include "core/model/item_info.h"
 
@@ -48,6 +47,9 @@ class ItemController : public QAbstractListModel {
 
     void setCurrentItem(ItemInfo* item);
 
+    // Curently working with txt files
+    // In future will be changed to work with csv file or
+    // database files
     void setDelimiter(QChar delimiter);
     void loadItems(QFile &file);
     void saveItems(QFile &file);
