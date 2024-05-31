@@ -71,15 +71,6 @@ void MainWindow::init() {
     setUnifiedTitleAndToolBarOnMac(true);
 }
 
-void MainWindow::tile() {
-    int topFrameWidth = this->geometry().top() - this->pos().y();
-    if (!topFrameWidth)
-        topFrameWidth = 40;
-    const QPoint pos = this->pos() + 2 * QPoint(topFrameWidth, topFrameWidth);
-    if (screen()->availableGeometry().contains(rect().bottomRight() + pos))
-        move(pos);
-}
-
 void MainWindow::createActions() {
     QMenu *fileMenu = menuBar()->addMenu(tr("&File"));
 

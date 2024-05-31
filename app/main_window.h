@@ -28,8 +28,6 @@ class MainWindow : public QMainWindow {
     MainWindow();
     explicit MainWindow(const QString &fileName);
 
-    void tile();
-
    private slots:
     void open();
     bool save();
@@ -42,8 +40,6 @@ class MainWindow : public QMainWindow {
     void openFile(const QString &fileName);
     void loadFile(const QString &fileName);
     bool saveFile(const QString &fileName) const;
-    static QString strippedName(const QString &fullFileName);
-    MainWindow *findMainWindow(const QString &fileName) const;
 
     QString m_curFileName;
     ItemController* m_itemController = nullptr;
