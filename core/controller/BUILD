@@ -6,6 +6,7 @@ qt_cc_library(
     srcs = ["item_controller.cpp"],
 	deps = [
 		"@rules_qt//:qt_core",
+		"@magic_enum//:magic_enum",
         "//core/model:item_model",
 	],
 	visibility = ["//visibility:public"],

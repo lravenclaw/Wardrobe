@@ -130,3 +130,10 @@ fetch_qt6()
 load("@rules_qt//tools:qt_toolchain.bzl", "register_qt_toolchains")
 
 register_qt_toolchains()
+
+
+git_repository(
+    name = "magic_enum",
+    tag = "v0.9.5",
+    remote = "https://github.com/Neargye/magic_enum.git",
+)

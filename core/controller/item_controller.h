@@ -9,6 +9,7 @@
 #include <QVariant>
 #include <QtGlobal>
 #include <QDebug>
+#include <magic_enum_all.hpp>
 
 
 #include "core/model/item_info.h"
@@ -20,20 +21,20 @@ class ItemController : public QAbstractListModel {
     Q_PROPERTY(ItemInfo* currentItem READ currentItem WRITE setCurrentItem NOTIFY currentItemChanged)
 
    public:
-    enum ItemRoles {
-        IdRole = Qt::UserRole + 1,
-        MaterialRole,
-        SizeRole,
-        BrandRole,
-        DetailsRole,
-        StyleRole,
-        PatternRole,
-        PlaceOfPurchaseRole,
-        WashPrincipleRole,
-        SeasonRole,
-        ColorRole,
-        PriceRole,
-        SourcesRole
+    enum class ItemRole {
+        Id = Qt::UserRole + 1,
+        Material,
+        Size,
+        Brand,
+        Details,
+        Style,
+        Pattern,
+        PlaceOfPurchase,
+        WashPrinciple,
+        Season,
+        Color,
+        Price,
+        Sources
     };
 
     [[nodiscard]] int rowCount(const QModelIndex &parent = QModelIndex()) const override;

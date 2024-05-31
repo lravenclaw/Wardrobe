@@ -23,32 +23,33 @@ QVariant ItemController::data(const QModelIndex &index, int role) const {
 
     auto* item = m_items[index.row()];
 
-    switch (role) {
-        case IdRole:
+    auto value = magic_enum::enum_value<ItemRole>(role);
+    switch (value) {
+        case ItemRole::Id:
             return QVariant::fromValue(item->id());
-        case MaterialRole:
+        case ItemRole::Material:
             return QVariant::fromValue(item->material());
-        case SizeRole:
+        case ItemRole::Size:
             return QVariant::fromValue(item->size());
-        case BrandRole:
+        case ItemRole::Brand:
             return QVariant::fromValue(item->brand());
-        case DetailsRole:
+        case ItemRole::Details:
             return QVariant::fromValue(item->details());
-        case StyleRole:
+        case ItemRole::Style:
             return QVariant::fromValue(item->style());
-        case PatternRole:
+        case ItemRole::Pattern:
             return QVariant::fromValue(item->pattern());
-        case PlaceOfPurchaseRole:
+        case ItemRole::PlaceOfPurchase:
             return QVariant::fromValue(item->placeOfPurchase());
-        case WashPrincipleRole:
+        case ItemRole::WashPrinciple:
             return QVariant::fromValue(item->washPrinciple());
-        case SeasonRole:
+        case ItemRole::Season:
             return QVariant::fromValue(item->season());
-        case ColorRole:
+        case ItemRole::Color:
             return QVariant::fromValue(item->color());
-        case PriceRole:
+        case ItemRole::Price:
             return QVariant::fromValue(item->price());
-        case SourcesRole:
+        case ItemRole::Sources:
             return QVariant::fromValue(item->sources());
         default:
             return {};
@@ -57,19 +58,9 @@ QVariant ItemController::data(const QModelIndex &index, int role) const {
 
 QHash<int, QByteArray> ItemController::roleNames() const {
     QHash<int, QByteArray> roles;
-    roles[IdRole] = "id";
-    roles[MaterialRole] = "material";
-    roles[SizeRole] = "size";
-    roles[BrandRole] = "brand";
-    roles[DetailsRole] = "details";
-    roles[StyleRole] = "style";
-    roles[PatternRole] = "pattern";
-    roles[PlaceOfPurchaseRole] = "place of purchase";
-    roles[WashPrincipleRole] = "wash principle";
-    roles[SeasonRole] = "season";
-    roles[ColorRole] = "color";
-    roles[PriceRole] = "price";
-    roles[SourcesRole] = "sources";
+    for (auto& role : magic_enum::enum_values<ItemRole>()) {
+        roles[magic_enum::enum_integer(role)] = QByteArray(magic_enum::enum_name(role).data());
+    }
     return roles;
 }
 
