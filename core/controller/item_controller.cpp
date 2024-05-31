@@ -23,33 +23,32 @@ QVariant ItemController::data(const QModelIndex &index, int role) const {
 
     auto* item = m_items[index.row()];
 
-    auto value = magic_enum::enum_value<ItemRole>(role);
-    switch (value) {
-        case ItemRole::Id:
+    switch (role) {
+        case magic_enum::enum_integer(ItemRole::Id):
             return QVariant::fromValue(item->id());
-        case ItemRole::Material:
+        case magic_enum::enum_integer(ItemRole::Material):
             return QVariant::fromValue(item->material());
-        case ItemRole::Size:
+        case magic_enum::enum_integer(ItemRole::Size):
             return QVariant::fromValue(item->size());
-        case ItemRole::Brand:
+        case magic_enum::enum_integer(ItemRole::Brand):
             return QVariant::fromValue(item->brand());
-        case ItemRole::Details:
+        case magic_enum::enum_integer(ItemRole::Details):
             return QVariant::fromValue(item->details());
-        case ItemRole::Style:
+        case magic_enum::enum_integer(ItemRole::Style):
             return QVariant::fromValue(item->style());
-        case ItemRole::Pattern:
+        case magic_enum::enum_integer(ItemRole::Pattern):
             return QVariant::fromValue(item->pattern());
-        case ItemRole::PlaceOfPurchase:
+        case magic_enum::enum_integer(ItemRole::PlaceOfPurchase):
             return QVariant::fromValue(item->placeOfPurchase());
-        case ItemRole::WashPrinciple:
+        case magic_enum::enum_integer(ItemRole::WashPrinciple):
             return QVariant::fromValue(item->washPrinciple());
-        case ItemRole::Season:
+        case magic_enum::enum_integer(ItemRole::Season):
             return QVariant::fromValue(item->season());
-        case ItemRole::Color:
+        case magic_enum::enum_integer(ItemRole::Color):
             return QVariant::fromValue(item->color());
-        case ItemRole::Price:
+        case magic_enum::enum_integer(ItemRole::Price):
             return QVariant::fromValue(item->price());
-        case ItemRole::Sources:
+        case magic_enum::enum_integer(ItemRole::Sources):
             return QVariant::fromValue(item->sources());
         default:
             return {};
@@ -59,7 +58,7 @@ QVariant ItemController::data(const QModelIndex &index, int role) const {
 QHash<int, QByteArray> ItemController::roleNames() const {
     QHash<int, QByteArray> roles;
     for (auto& role : magic_enum::enum_values<ItemRole>()) {
-        roles[magic_enum::enum_integer(role)] = QByteArray(magic_enum::enum_name(role).data());
+        roles[magic_enum::enum_underlying(role)] = QByteArray(magic_enum::enum_name(role).data());
     }
     return roles;
 }
