@@ -1,0 +1,50 @@
+workspace(name = "qt_project")
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+BAZEL_CLANG_FORMAT_COMMIT = "ad5f2572518053b36a2d999f7b824fb5a7819ab4"
+
+BAZEL_CLANG_FORMAT_SHA = "c31f0ea477dd0da84fc2c694a533797a9d2bf060f8cca8b5ea30402a47a2ea0a"
+
+http_archive(
+    name = "bazel_clang_format",
+    sha256 = BAZEL_CLANG_FORMAT_SHA,
+    strip_prefix = "bazel_clang_format-{commit}".format(
+        commit = BAZEL_CLANG_FORMAT_COMMIT,
+    ),
+    url = "https://github.com/oliverlee/bazel_clang_format/archive/{commit}.tar.gz".format(
+        commit = BAZEL_CLANG_FORMAT_COMMIT,
+    ),
+)
+
+http_archive(
+    name = "rules_qt",
+    sha256 = BAZEL_CLANG_FORMAT_SHA,
+    url = "https://github.com/oliverlee/bazel_clang_format/archive/{commit}.tar.gz".format(
+        commit = BAZEL_CLANG_FORMAT_COMMIT,
+    ),
+)
+
+http_archive(
+    name = "rules_qt",
+    sha256 = "bd8253247c0e45e6a180c87083f20910159e36cd67f6b11d5d3d865a61ea52cd",
+    strip_prefix = "rules_qt6-0.0.3",
+    url = "https://github.com/Vertexwahn/rules_qt6/releases/download/v0.0.3/rules_qt6-v0.0.3.tar.gz",
+)
+
+load("@rules_qt//:fetch_qt.bzl", "fetch_qt6")
+
+fetch_qt6()
+
+load("@rules_qt//tools:qt_toolchain.bzl", "register_qt_toolchains")
+
+register_qt_toolchains()
+
+
+git_repository(
+    name = "magic_enum",
+    tag = "v0.9.5",
+    remote = "https://github.com/Neargye/magic_enum.git",
+)
